@@ -3,7 +3,7 @@ import datetime
 
 from slack_sdk import WebClient
 
-client = WebClient(token=os.environ["SLACK_USER_TOKEN"]) # unarchiveを使用するために、Bot tokenではなくUser OAurh Tokenを使用
+client = WebClient(token=os.environ["SLACK_USER_TOKEN"]) # unarchiveを使用するために、Bot tokenではなくUser OAuth Tokenを使用
 today = datetime.datetime.now()
 times_channel = "times-{}"
 
