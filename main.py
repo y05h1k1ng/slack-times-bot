@@ -6,7 +6,6 @@ from slack_sdk import WebClient
 client = WebClient(token=os.environ["SLACK_USER_TOKEN"]) # unarchiveを使用するために、Bot tokenではなくUser OAurh Tokenを使用
 today = datetime.datetime.now()
 times_channel = "times-{}"
-user_id = "U0325Q5U6KT"
 
 filtered_channels = [
     datetime.timedelta(days=0),
@@ -23,11 +22,6 @@ def create_today_channel():
     today_channel = times_channel.format(today.strftime("%Y%m%d"))
     create_response = client.conversations_create(name=today_channel)
     print("[+] create:", create_response)
-    invite_response = client.conversations_invite(
-        channel=create_response["channel"]["id"],
-        users=user_id
-    )
-    print("[+] invite:", invite_response)
     return
 
 def filter_channel():
