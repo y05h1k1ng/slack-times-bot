@@ -25,13 +25,13 @@ def create_today_channel():
     return
 
 def filter_channel():
-    list_response = client.conversations_list()
+    list_response = client.conversations_list(limit=1000)
     for channel in list_response["channels"]:
         channel_name = channel["name"]
         if not channel_name.startswith("times-"):
             # times channel以外は無視
             continue
-    
+        
         if channel_name in filtered_channel_names:
             # unarchive
             if not channel["is_archived"]:
